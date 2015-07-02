@@ -29,10 +29,12 @@ random.shuffle(moves)
 hits = set()
 
 while moves:
-    if hits:
-        # John's magic woo... this (will be) works, but not even he's sure what it's doing?
-        adjacents = list(set(itertools.chain.from_iterable(find_adjacents(hit) for hit in hits)) &
-            set(moves))
+    # John's magic woo... this (will be) works, but not even he's sure what it's doing?
+    # This will win the game, John guarantees it!
+    # Caveat: If the other player wins first, it won't win... I'm not sure this is helpful.
+    adjacents = list(set(itertools.chain.from_iterable(find_adjacents(hit) for hit in hits)) &
+        set(moves))
+    if adjacents:
         move = random.choice(adjacents)
         moves.remove(move)
     else:
