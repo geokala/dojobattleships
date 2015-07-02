@@ -8,6 +8,7 @@ y = range(1, 11)
 moves = list(itertools.product(x, y))
 random.shuffle(moves)
 
-for move in moves.pop():
+while moves:
+    move = moves.pop()
     print(move)
-    input(prompt='Press enter to continue')
+    input()
