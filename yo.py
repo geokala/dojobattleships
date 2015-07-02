@@ -30,10 +30,9 @@ hits = set()
 
 while moves:
     if hits:
-        print(list(itertools.chain(find_adjacents(hit) for hit in hits)))
-        # John's magic woo...
-        adjacents = list(set(itertools.chain(find_adjacents(hit) for hit in hits)) & set(moves))
-        print(adjacents)
+        # John's magic woo... this (will be) works, but not even he's sure what it's doing?
+        adjacents = list(set(itertools.chain.from_iterable(find_adjacents(hit) for hit in hits)) &
+            set(moves))
         move = random.choice(adjacents)
         moves.remove(move)
     else:
