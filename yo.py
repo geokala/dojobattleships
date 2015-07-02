@@ -1,7 +1,13 @@
 #! /usr/bin/env python
+import random
+import itertools
 
-def battleit():
-    pass
+x = 'ABCDEFGHIJ'
+y = range(1, 11)
 
-if __name__ == '__main__':
-    battleit()
+moves = list(itertools.product(x, y))
+random.shuffle(moves)
+
+for move in moves.pop():
+    print(move)
+    input(prompt='Press enter to continue')
